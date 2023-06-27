@@ -16,6 +16,7 @@
 typedef struct avl_tree_s
 {
 	int key;
+	int height;
 	struct avl_tree_s *right;
 	struct avl_tree_s *left;
 } avl_tree;

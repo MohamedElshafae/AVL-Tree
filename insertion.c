@@ -1,6 +1,6 @@
 #include "main.h"
 
-void insertion(int number)
+void insertion(int key)
 {
 	avl_tree *new_node = malloc(sizeof(avl_tree)), *cur = root, *parent;
 
@@ -9,9 +9,10 @@ void insertion(int number)
 		printf("Error in allocate");
 		return;
 	}
-	new_node->key = number;
+	new_node->key = key;
 	if (!root)
 	{
+		new_node->height = 1;
 		root = new_node;
 		return;
 	}
@@ -19,9 +20,9 @@ void insertion(int number)
 	while (cur)
 	{
 		parent = cur;
-		if (number < cur->key)
+		if (key < cur->key)
 			cur = cur->left;
-		else if (number > cur->key)
+		else if (key > cur->key)
 			cur = cur->right;
 		else
 		{
@@ -30,7 +31,8 @@ void insertion(int number)
 			return;
 		}
 	}
-	if (number < parent->key)
+	new_node->height = parent->height + 1;
+	if (key < parent->key)
 		parent->left = new_node;
 	else
 		parent->right = new_node;
