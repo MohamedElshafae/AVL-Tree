@@ -13,10 +13,15 @@
  *
  * Description: AVL Tree
  */
-typedef struct avl-tree_s
+typedef struct avl_tree_s
 {
-	int n;
-	struct avl-tree_s right;
-	struct avl-tree_s left;
-} avl-tree;
+	int key;
+	struct avl_tree_s *right;
+	struct avl_tree_s *left;
+} avl_tree;
+extern avl_tree *root;
+
+/* ------------------ main function ------------------ */
+void insertion(int key);
+void print_inorder(avl_tree *node);
 #endif
